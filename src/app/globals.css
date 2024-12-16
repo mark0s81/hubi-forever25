@@ -2,20 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply grid grid-rows-[1fr_21fr_2fr] sm:grid-rows-[2fr_21fr_1fr] grid-cols-1 antialiased h-screen items-center justify-center font-mono tracking-wide;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  header {
+    @apply flex items-center h-full bg-primary text-white py-2 px-4;
+  }
+  footer {
+    @apply flex items-center justify-center h-full text-center text-[8px] lg:text-xs bg-secondary text-white p-1;
+  }
+  h1 {
+    @apply text-4xl font-bold my-2;
+  }
+  h2, .h2 {
+    @apply text-2xl font-bold my-2;
+  }
+  form {
+    @apply p-4 sm:p-8 bg-slate-200 rounded border border-slate-600 shadow;
+  }
 }
