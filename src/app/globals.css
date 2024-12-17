@@ -12,6 +12,9 @@
   footer {
     @apply flex items-center justify-center h-full text-center text-[8px] lg:text-xs bg-secondary text-white p-1;
   }
+  main {
+    @apply my-3;
+  }
   h1 {
     @apply text-4xl font-bold my-2;
   }
