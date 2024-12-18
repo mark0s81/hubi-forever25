@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
@@ -9,21 +9,22 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
+  const searchParams = useSearchParams()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const callbackUrl = searchParams.get("callbackUrl") ?? '';
 
     const result = await signIn("credentials", {
       redirect: false,
       username,
       password,
-    });
+    })
 
-    if (result.ok) {
-      router.push("/?message=LoginOK");
-    } else {
-      setError("Invalid username or password");
-    }
+    if (result.ok)
+      callbackUrl ? router.push(callbackUrl) :router.push("/");
+    else setError("Invalid username or password");
   };
 
   return (

@@ -30,7 +30,7 @@ const authOptions = {
     signIn: "/login", // login page
   },
   session: {
-    maxAge: 60,
+    maxAge: 3600,
   }
 };
 
