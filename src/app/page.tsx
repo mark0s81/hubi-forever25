@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function HomePage({}) {
   const session = await getServerSession(authOptions);
@@ -9,11 +10,12 @@ export default async function HomePage({}) {
     redirect("/login");
   }
 
-  const message = "Benvenuto nella pagina principale!";
   return (
-    <div>
-      <h1>Pagina Principale</h1>
-      <p>{message}</p>
+    <div className="container">
+      <h1>Home Page</h1>
+      <p>
+        Click <Link href="/admin">here</Link> to go to the admin page!
+      </p>
     </div>
   );
 }

@@ -7,14 +7,18 @@ export default async function ProtectedPage() {
   // Validate session on the server side
   const session = await getServerSession(authOptions);
 
+  console.log(session);
+
   if (!session) {
     redirect("/login?callbackUrl=/admin"); // Redirect to login with callback
   }
 
+  const user = session.user;
+
   // Session is valid
   return (
-    <div className="max-w-xs sm:max-w-sm mx-auto">
-      <h1>Welcome, {session.user.name}!</h1>
+    <div className="container">
+      <h1>Welcome, {user?.name}!</h1>
       <p className="mb-2">Fill in this form.</p>
       <UserForm />
     </div>

@@ -21,7 +21,13 @@
   h2, .h2 {
     @apply text-2xl font-bold my-2;
   }
-  form {
-    @apply p-4 sm:p-8 bg-slate-200 rounded border border-slate-600 shadow;
+  a {
+    @apply text-red-800 underline hover:font-bold;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-xs sm:max-w-sm mx-auto;
   }
 }
